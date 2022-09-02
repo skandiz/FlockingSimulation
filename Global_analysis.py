@@ -29,12 +29,12 @@ plt.rcParams['figure.figsize'] = (9, 6)
 
 from functions import get_observables1, getAngularDistribution
 
-###################################################################
-#   IMPORT DATA, SET NUMBER OF ELEMENTS AND FRAMES TO ANALYZE 
-###################################################################
+######################################################################################################################################
+#   					IMPORT DATA, SET NUMBER OF ELEMENTS AND FRAMES TO ANALYZE 
+######################################################################################################################################
 
 plotVerb = True
-configurations = 1
+configurations = 15
 N = 1000
 framesList = np.arange(0, 3600, 1) 
 
@@ -46,8 +46,8 @@ cohesionMultiplier = np.zeros(configurations)
 separationMultiplier = np.zeros(configurations)
 
 for k in range(configurations):
-	dataList.append(pd.read_csv(f"/Users/matteoscandola/Processing/flockingSimulation_v2.0/data3/Flock1data{k}.csv", sep = ' '))
-	p = pd.read_csv(f"/Users/matteoscandola/Processing/flockingSimulation_v2.0/data3/parameters{k}.csv", sep = ' ', header=None,  dtype=np.float32)
+	dataList.append(pd.read_csv(f"Flock1data{k}.csv", sep = ' '))
+	p = pd.read_csv(f"parameters{k}.csv", sep = ' ', header=None,  dtype=np.float32)
 	p.columns = ["a", "b", "c", "d", "e"]
 	nBoids[k] = int(p.a)
 	noiseMultiplier[k] = np.round(p.b, 4)
@@ -66,9 +66,9 @@ print(parameters)
 print("End of import data")
 print(f'\n')
 
-###################################################################
-#   			SET BINNING AND GET ISOTROPIC DENSITY
-###################################################################
+######################################################################################################################################
+#   						SET BINNING AND GET ISOTROPIC DENSITY
+######################################################################################################################################
 
 delta1 = np.pi/20.
 delta2 = np.pi/10.
@@ -84,9 +84,9 @@ randomHist, _, _ = np.histogram2d(a, p, bins=[alpha_bin, phi_bin], density = Tru
 normalization = np.mean(randomHist)
 print("Binning set and computation of isotropic normalization:", normalization)
 
-###################################################################
-#   							MAIN
-###################################################################
+######################################################################################################################################
+#   								MAIN
+######################################################################################################################################
 
 meanDistance = np.zeros((configurations, len(framesList)))
 meanPerceivedAgents = np.zeros((configurations, len(framesList), 2))
@@ -147,9 +147,10 @@ for k in range(configurations):
 	second_neighbour_meanHist.append(np.mean(second_neighbour_histList, axis=0))
 	last_neighbour_meanHist.append(np.mean(last_neighbour_histList, axis=0))
 
-##################################################################################################
-#   											PLOT
-##################################################################################################
+######################################################################################################################################
+#   								PLOT
+######################################################################################################################################
+
 # ISOTROPIC CASE DENSITY DISTRIBUTION
 if plotVerb:
 	fig, (ax) = plt.subplots(1, 1, figsize = (10, 3), subplot_kw = dict(projection = "mollweide"))
@@ -236,12 +237,9 @@ if plotVerb:
 
 		plt.show()
 
-print("End of code")
-
-
 
 ###################################################################################################
-#   	  								WIP: FRACTAL DIMENSION 
+#   	  				WIP: FRACTAL DIMENSION 
 ##################################################################################################
 
 # @njit(nogil=True)
