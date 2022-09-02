@@ -7,4 +7,7 @@ The movement behaviour is essentially a modified Craig Reynolds model and consis
 
 The simulation is performed with Processing a graphic library and IDE based on Java.
 
-The analysis is performed with Python and (for now) it's only a Global Analysis, a clustering technique will be implemented to compute local observables.
+The analysis is performed with Python and is divided in the following codes:
+  - Global Analysis
+  - Clustering technique with a code to create a video of the clustering result
+  - Local Analysis
