@@ -8,7 +8,7 @@ The movement behaviour is essentially a modified Craig Reynolds model and consis
 The simulation is performed with Processing a graphic library and IDE based on Java.
 
 The result of this procedure is shown in the following video: \
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/i7meB-VjJpg/0.jpg)](https://youtu.be/i7meB-VjJpg)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/7meB-VjJpg/0.jpg)](https://youtu.be/7meB-VjJpg)
 
 The analysis is performed with Python and is divided in the following codes:
 
